@@ -186,3 +186,5 @@ Use a database account with backup privileges. Supply the password interactively
 Back up `public/uploads` and `config/local.php` (especially the encryption key) separately into access-controlled storage. Never place backups in the web root. Keep a retention schedule appropriate to your business and test restoration into a separate database before relying on backups. Restore SQL with the MySQL client's `SOURCE` command against the intended database, restore uploaded media and the original application key, then verify login, catalogue, order totals and encrypted payment settings.
 
 The reference store was reviewed for its catalogue/bundle shopping structure; no competitor branding, photography, reviews or proprietary copy were copied. Original assets supplied by the user are in `public/assets/images/`.
+#   p r a k s h i f o o d  
+ 
