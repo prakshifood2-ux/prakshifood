@@ -1,0 +1,9 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(app|config|database|storage|tests|bin)(/|$) - [F,L]
+RewriteRule ^\.(.*)$ - [F,L]
+RewriteRule ^(?:README\.md|.*\.sql)$ - [F,L]
+RewriteRule ^$ public/index.php [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ public/index.php [L,QSA]

@@ -1,0 +1,7 @@
+<section class="panel mt-4 no-print"><h3>Customer emails & invoice</h3><p class="small muted">Confirmation, payment and delivery updates are emailed automatically. Sent means the mail server accepted the message.</p>
+<div class="d-flex flex-wrap gap-2 mb-3"><a class="btn btn-outline-primary" href="<?= e(url('admin/invoice',['id'=>$order['id']])) ?>">Download invoice PDF</a>
+<form method="post" action="<?= e(url('admin/order')) ?>"><?= csrf() ?><input type="hidden" name="id" value="<?= $order['id'] ?>"><button class="btn btn-outline-primary" name="action" value="invoice-email">Email invoice again</button></form>
+<form method="post" action="<?= e(url('admin/order')) ?>"><?= csrf() ?><input type="hidden" name="id" value="<?= $order['id'] ?>"><button class="btn btn-outline-primary" name="action" value="retry-emails">Retry failed emails</button></form></div>
+<?php if(!$orderEmails): ?><p class="muted">No automated emails recorded for this older order. You can email its invoice above.</p><?php endif ?>
+<?php foreach($orderEmails as $mail): ?><div class="border-top py-2"><strong><?= e($mail['subject']) ?></strong><span class="status-pill ms-2"><?= e($mail['state']) ?></span><small class="d-block muted">Attempts: <?= $mail['attempts'] ?><?= $mail['sent_at']?' · '.e($mail['sent_at']):'' ?></small><?php if($mail['last_error']): ?><p class="small text-danger mb-0"><?= e($mail['last_error']) ?></p><?php endif ?></div><?php endforeach ?>
+</section>
